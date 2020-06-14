@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="35856c1e-9f8c-46ce-89e0-a4cb87412c8d" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="test-repoFlow" doc:id="20bd857a-eda5-4601-be19-03c8ee2ae60a" >
+		<http:listener doc:name="Listener" doc:id="cfe58f71-7f61-4393-a5a1-dcdba89ba352" config-ref="HTTP_Listener_config" path="/testrepo"/>
+		<set-payload value="Teja" doc:name="Set Payload" doc:id="2777c2b7-5b49-439b-ae52-0af3ffb9d79b" />
+		<logger level="INFO" doc:name="Logger" doc:id="623ff3df-c15d-4c78-857f-fe4243519ff7" message="#[paylaod]"/>
+	</flow>
+</mule>
